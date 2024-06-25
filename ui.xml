@@ -1,5 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
-  <Frame name="FarmerBarFrame" hidden="true" parent="UIParent" enableMouse="true" movable="true" frameStrata="DIALOG">
+  <Frame name="ProgressFarmFrame" hidden="true" parent="UIParent" enableMouse="true" movable="true" frameStrata="DIALOG">
     <Size x="300" y="250"/>
     <Anchors>
       <Anchor point="CENTER"/>
@@ -21,20 +21,20 @@
         <Anchors>
           <Anchor point="CENTER" relativeTo="$parentTitleBg" relativePoint="CENTER" x="5" y="0"/>
         </Anchors>
-        <Text value="FarmerBar"/>
+        <Text value="ProgressFarm"/>
       </FontString>
-      <!-- Menú desplegable para seleccionar objeto -->
-      <Frame name="FarmerBarDropdown" inherits="UIDropDownMenuTemplate">
-        <Anchors>
-          <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="AddItemButton" x="0" y="-10"/>
-        </Anchors>
-      </Frame>
       <!-- Texto del objeto seleccionado -->
       <FontString name="SelectedItemText" inherits="GameFontNormal">
         <Anchors>
           <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="AddItemButton" x="0" y="-10"/>
         </Anchors>
       </FontString>
+      <!-- Menú desplegable para seleccionar objeto -->
+      <Frame name="ProgressFarmDropdown" inherits="UIDropDownMenuTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="AddItemButton" x="0" y="-10"/>
+        </Anchors>
+      </Frame>
       <!-- Cuadro de entrada para la cantidad máxima -->
       <EditBox name="MaxInputBox" inherits="InputBoxTemplate">
         <Size x="50" y="30"/>

@@ -1,15 +1,23 @@
 local items = {
   "Mena de cobalto",
-  "Mena de saronita"
+  "Mena de saronita",
+  "Mena de obsidium",
+  "Mena de elementium"
 }
 
 local selectedItem = nil
-
 
 local frame = CreateFrame("Frame", "ProgressFarmFrame", UIParent, "BasicFrameTemplateWithInset")
 frame:SetSize(300, 250)
 frame:SetPoint("TOPLEFT")
 frame:Hide()
+
+-- Añade la capacidad de mover el marco
+frame:SetMovable(true)
+frame:EnableMouse(true)
+frame:RegisterForDrag("LeftButton")
+frame:SetScript("OnDragStart", frame.StartMoving)
+frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
 
 frame.title = frame:CreateFontString(nil, "OVERLAY")
 frame.title:SetFontObject("GameFontHighlight")
@@ -17,7 +25,7 @@ frame.title:SetPoint("CENTER", frame.TitleBg, "CENTER", 5, 0)
 frame.title:SetText("ProgressFarm")
 
 local selectedItemText = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-selectedItemText:SetPoint("TOP", frame, "BOTTOM", 0, -10)
+selectedItemText:SetPoint("TOP", frame, "TOP", 0, -40)  -- Ajusta el punto de anclaje aquí
 selectedItemText:SetText("Selecciona un objeto")
 
 local dropdown = CreateFrame("Frame", nil, frame, "UIDropDownMenuTemplate")
@@ -36,13 +44,18 @@ local progressBar = CreateFrame("StatusBar", nil, frame, "TextStatusBar")
 progressBar:SetSize(200, 20)
 progressBar:SetPoint("TOP", maxInputBox, "BOTTOM", 0, -20)
 progressBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
+progressBar:SetStatusBarColor(0, 1, 0) -- Verde
 progressBar:SetMinMaxValues(0, 1)
 progressBar:SetValue(0)
 progressBar:Hide()
 
+local progressBarBg = progressBar:CreateTexture(nil, "BACKGROUND")
+progressBarBg:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+progressBarBg:SetAllPoints(true)
+
 local progressText = progressBar:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+progressText:SetFont("Fonts\\FRIZQT__.TTF", 10)
 progressText:SetPoint("CENTER", progressBar)
-progressBar.text = progressText
 
 local farmButton = CreateFrame("Button", nil, frame, "GameMenuButtonTemplate")
 farmButton:SetPoint("TOP", progressBar, "BOTTOM", 0, -10)
@@ -78,8 +91,8 @@ end
 UIDropDownMenu_Initialize(dropdown, UpdateDropdown)
 UIDropDownMenu_SetText(dropdown, "Seleccionar Objeto")
 
-SLASH_FARMERBAR1 = "/farm"
-SlashCmdList["FARMERBAR"] = function()
+SLASH_PROGRESSFARM1 = "/farm"
+SlashCmdList["PROGRESSFARM"] = function()
   frame:Show()
 end
 
