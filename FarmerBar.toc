@@ -1,0 +1,8 @@
+## Interface: 10000
+## Notes: An addon to facilitate the farming of objects.
+## Title: FarmerBar
+## Author: CreztY
+## Version: 1.0
+
+ui.xml
+FarmerBar.lua

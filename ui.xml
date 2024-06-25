@@ -1,0 +1,73 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Frame name="FarmerBarFrame" hidden="true" parent="UIParent" enableMouse="true" movable="true" frameStrata="DIALOG">
+    <Size x="300" y="250"/>
+    <Anchors>
+      <Anchor point="CENTER"/>
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+      <EdgeSize>
+        <AbsValue val="32"/>
+      </EdgeSize>
+      <TileSize>
+        <AbsValue val="32"/>
+      </TileSize>
+      <BackgroundInsets>
+        <AbsInset left="11" right="12" top="12" bottom="11"/>
+      </BackgroundInsets>
+    </Backdrop>
+    <Frames>
+      <!-- Título del frame -->
+      <FontString name="$parentTitle" inherits="GameFontHighlight">
+        <Anchors>
+          <Anchor point="CENTER" relativeTo="$parentTitleBg" relativePoint="CENTER" x="5" y="0"/>
+        </Anchors>
+        <Text value="FarmerBar"/>
+      </FontString>
+      <!-- Menú desplegable para seleccionar objeto -->
+      <Frame name="FarmerBarDropdown" inherits="UIDropDownMenuTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="AddItemButton" x="0" y="-10"/>
+        </Anchors>
+      </Frame>
+      <!-- Texto del objeto seleccionado -->
+      <FontString name="SelectedItemText" inherits="GameFontNormal">
+        <Anchors>
+          <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="AddItemButton" x="0" y="-10"/>
+        </Anchors>
+      </FontString>
+      <!-- Cuadro de entrada para la cantidad máxima -->
+      <EditBox name="MaxInputBox" inherits="InputBoxTemplate">
+        <Size x="50" y="30"/>
+        <Anchors>
+          <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="SelectedItemText" x="0" y="-10"/>
+        </Anchors>
+        <Text>
+          <Text value="0"/>
+        </Text>
+      </EditBox>
+      <!-- Barra de progreso -->
+      <StatusBar name="ProgressBar" inherits="TextStatusBar">
+        <Size x="200" y="20"/>
+        <Anchors>
+          <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="MaxInputBox" x="0" y="-20"/>
+        </Anchors>
+        <StatusBarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+        <Frames>
+          <FontString name="$parentText" inherits="GameFontNormal">
+            <Anchors>
+              <Anchor point="CENTER" relativeTo="$parent"/>
+            </Anchors>
+          </FontString>
+        </Frames>
+      </StatusBar>
+      <!-- Botón para farmear -->
+      <Button name="FarmButton" inherits="GameMenuButtonTemplate">
+        <Size x="140" y="40"/>
+        <Anchors>
+          <Anchor point="BOTTOM" relativePoint="BOTTOM" relativeTo="$parent" x="0" y="50"/>
+        </Anchors>
+        <Text value="Farmear"/>
+      </Button>
+    </Frames>
+  </Frame>
+</Ui>
