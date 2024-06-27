@@ -21,9 +21,9 @@ ProgressFarm is a tool for World of Warcraft players who want to track and manag
 ## Instructions for Use:
 
 ### Installation:
-    1. Download the addon from CurseForge.
-    2. Extract the downloaded files into your World of Warcraft `Interface/AddOns` directory.
-    3. Restart World of Warcraft if it is currently running.
+- Download the addon from [CurseForge](https://legacy.curseforge.com/wow/addons/progressfarm).
+- Extract the downloaded files into your World of Warcraft `Interface/AddOns` directory.
+- Restart World of Warcraft if it is currently running.
 
 ### Open the Addon:
 Use the `/farm` command in the game chat to open the main ProgressFarm frame.
